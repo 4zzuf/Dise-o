@@ -341,10 +341,10 @@ def calentamiento(Perd_cu, Perd_nuc, N_cap, aisl_cap, diame, tipo_cond, long_ax,
 # if __name__ == "__main__":
 #     try:
         # DATOS DE ENTRADA
-Snom = 640*1000 / 3 # Monofasica en VA
-Vnom = [10000, 230] # tensiones en voltios
-Grupo = "Dy" # o Yd
-tap = 0.05 # +/- taps de AT
+Snom = 100 * 1000 / 3  # Potencia monofásica en VA
+Vnom = [10000, 230]  # tensiones en voltios
+Grupo = "Dy"  # grupo de conexión (Dyn5)
+tap = 0.05  # +/- taps de AT
 f = 60
 
 # CONSTANTES
