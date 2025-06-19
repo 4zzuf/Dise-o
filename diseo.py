@@ -1,8 +1,12 @@
 # ================================ BLOQUE DE FUNCION, NO MODIFICAR =============================
 
 import math as ma
-from tabulate import tabulate
-# pip install tabulate
+
+    from tabulate import tabulate
+except ImportError:
+    import pip
+    pip.main(['install', 'tabulate'])
+    from tabulate import tabulate
 
 def escribir_en_txt(texto):
     try:
@@ -456,4 +460,3 @@ calentamiento(Perd_cu, Perd_nuc, N_cap, aisl_cap, diame, tipo_cond, long_ax, D_n
     # except Exception as e:
     #     print(f"Error durante la ejecución del programa: {e}")
     # aber"
-    
