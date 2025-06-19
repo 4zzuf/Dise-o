@@ -1,12 +1,22 @@
-# ================================ BLOQUE DE FUNCION, NO MODIFICAR =============================
+# ================================ BLOQUE DE FUNCION, NO MODIFICAR ===============================
 
 import math as ma
 
+try:
     from tabulate import tabulate
 except ImportError:
-    import pip
-    pip.main(['install', 'tabulate'])
-    from tabulate import tabulate
+    def tabulate(rows, headers=(), tablefmt="grid"):
+        """Simple fallback table formatter."""
+        if headers:
+            rows = [headers] + list(rows)
+        widths = [max(len(str(cell)) for cell in column) for column in zip(*rows)]
+        hr = "+-" + "-+-".join("-" * w for w in widths) + "-+"
+        def fmt(row):
+            return "| " + " | ".join(f"{str(cell):{widths[i]}}" for i, cell in enumerate(row)) + " |"
+        lines = [hr] + [fmt(r) for r in rows]
+        lines.insert(2, hr) if headers else None
+        lines.append(hr)
+        return "\n".join(lines[1:] if not headers else lines)
 
 def escribir_en_txt(texto):
     try:
@@ -345,10 +355,10 @@ def calentamiento(Perd_cu, Perd_nuc, N_cap, aisl_cap, diame, tipo_cond, long_ax,
 # if __name__ == "__main__":
 #     try:
         # DATOS DE ENTRADA
-Snom = 640*1000 / 3 # Monofasica en VA
-Vnom = [10000, 230] # tensiones en voltios
-Grupo = "Dy" # o Yd
-tap = 0.05 # +/- taps de AT
+Snom = 100 * 1000 / 3  # potencia monofásica en VA (100 kVA total)
+Vnom = [10000, 230]  # tensiones en voltios [AT, BT]
+Grupo = "Dy"  # grupo de conexión según Dyn5
+tap = 0.05  # regulación de AT ± 5 %
 f = 60
 
 # CONSTANTES
