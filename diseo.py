@@ -455,3 +455,5 @@ escribir_en_txt(impri_temp)
 calentamiento(Perd_cu, Perd_nuc, N_cap, aisl_cap, diame, tipo_cond, long_ax, D_nuc_circ)
     # except Exception as e:
     #     print(f"Error durante la ejecución del programa: {e}")
+    # aber"
+    
